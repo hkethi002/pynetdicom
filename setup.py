@@ -43,7 +43,7 @@ setup(
         "Topic :: Scientific/Engineering :: Medical Science Apps.",
         "Topic :: Software Development :: Libraries",
     ],
-    install_requires=["pydicom>=2.2.0"],
+    install_requires=["pydicom>=2.1.0"],
     extras_require={  # will also install from `install_requires`
         "apps": ["sqlalchemy"],
         "docs": [
