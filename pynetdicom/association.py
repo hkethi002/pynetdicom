@@ -434,8 +434,7 @@ class Association(threading.Thread):
             cx for cx in possible_contexts if ab_syntax == cx.abstract_syntax
         ]
         for p_cx in possible_contexts:
-            if p_cx.abstract_syntax.__str__() == '1.2.840.10008.5.1.4.1.1.2':
-                p_cx._as_scu = True
+            p_cx._as_scu = True
 
         # For UPS we can also match UPS Push to Pull/Watch/Event/Query
         if ab_syntax == UnifiedProcedureStepPush and not possible_contexts:
