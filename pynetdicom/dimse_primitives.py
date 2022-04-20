@@ -1079,7 +1079,7 @@ class C_MOVE(DIMSEPrimitive):
     @property
     def NumberOfCompletedSuboperations(self) -> Optional[int]:
         """Get or set the *Number of Completed Suboperations* as :class:`int`."""
-        return self._NumberOfCompletedSuboperations
+        return _fix_num_of_subops(self._NumberOfCompletedSuboperations)
 
     @NumberOfCompletedSuboperations.setter
     def NumberOfCompletedSuboperations(self, value: Optional[int]) -> None:
@@ -1089,7 +1089,7 @@ class C_MOVE(DIMSEPrimitive):
     @property
     def NumberOfFailedSuboperations(self) -> Optional[int]:
         """Get or set the *Number of Failed Suboperations* as :class:`int`."""
-        return self._NumberOfFailedSuboperations
+        return _fix_num_of_subops(self._NumberOfFailedSuboperations)
 
     @NumberOfFailedSuboperations.setter
     def NumberOfFailedSuboperations(self, value: Optional[int]) -> None:
@@ -1099,7 +1099,7 @@ class C_MOVE(DIMSEPrimitive):
     @property
     def NumberOfRemainingSuboperations(self) -> Optional[int]:
         """Get or set the *Number of Remaining Suboperations* as :class:`int`."""
-        return self._NumberOfRemainingSuboperations
+        return _fix_num_of_subops(self._NumberOfRemainingSuboperations)
 
     @NumberOfRemainingSuboperations.setter
     def NumberOfRemainingSuboperations(self, value: Optional[int]) -> None:
@@ -1109,7 +1109,7 @@ class C_MOVE(DIMSEPrimitive):
     @property
     def NumberOfWarningSuboperations(self) -> Optional[int]:
         """Get or set the *Number of Warning Suboperations* as :class:`int`."""
-        return self._NumberOfWarningSuboperations
+        return _fix_num_of_subops(self._NumberOfWarningSuboperations)
 
     @NumberOfWarningSuboperations.setter
     def NumberOfWarningSuboperations(self, value: Optional[int]) -> None:
@@ -1136,6 +1136,12 @@ class C_MOVE(DIMSEPrimitive):
     def Priority(self, value: int) -> None:
         """Set the *Priority*."""
         self._Priority = value
+
+
+def _fix_num_of_subops(num_of_subops):
+    if num_of_subops:
+        return num_of_subops % 65535
+    return num_of_subops
 
 
 class C_ECHO(DIMSEPrimitive):

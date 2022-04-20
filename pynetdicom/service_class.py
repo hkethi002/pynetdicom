@@ -1600,7 +1600,7 @@ class QueryRetrieveServiceClass(ServiceClass):
             self._move_scp(req, context)
         else:
             raise ValueError(
-                "The supplied abstract syntax is not valid for use with the "
+                f"The supplied abstract syntax {context.abstract_syntax} is not valid for use with the "
                 "Query/Retrieve Service Class"
             )
 
